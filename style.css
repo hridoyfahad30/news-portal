@@ -1,0 +1,8 @@
+.newsDetails{
+    white-space:pre-line;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 150px;
+    max-height: 150px;
+    margin-bottom: 20px;
+  }
