@@ -49,8 +49,6 @@ const showCetegoryNews = (cetegoriesNews, cetegoryName) => {
 
         const date = new Date(singleCetegoryNews.author.published_date).toLocaleDateString();
 
-        // console.log(singleCetegoryNews);
-
         newsContainer.innerHTML += `
         
         <div class="flex justify-between items-start gap-5 bg-white p-6 my-8 rounded-lg max-h-96">
@@ -82,12 +80,38 @@ const showCetegoryNews = (cetegoriesNews, cetegoryName) => {
                             <i>${singleCetegoryNews.rating.number}</i>
                         </div>
                         <div>
-                            <button class="px-4 py-2 rounded-full hover:bg-indigo-100"><i class="fa-solid fa-arrow-right"></i></button>
+                        <label onclick="detailsNewsFetch('${singleCetegoryNews._id}')" for="my-modal-5" class="btn bg-indigo-700 hover:bg-indigo-600 rounded-full"><i class="fa-solid fa-arrow-right"></i></label>
                         </div>
                     </div>
                 </div>
             </div>
 
         `;
+    })
+};
+
+
+/* Details News Fetch */
+
+const detailsNewsFetch = async(singleID) => {
+    const url = `https://openapi.programming-hero.com/api/news/${singleID}`;
+    const res = await fetch(url)
+    const data = await res.json()
+    showDetailsNews(data.data);
+};
+
+
+/* Details News Show */
+
+const showDetailsNews = News => {
+    const modalNewsTitle = document.getElementById('modalNewsTitle');
+    const modalNewsDetails = document.getElementById('modalNewsDetails');
+    const modalNewsImage = document.getElementById('modalNewsImage');
+    News.forEach(singleNews => {
+
+        modalNewsTitle.innerText = `${singleNews.title}`;
+        modalNewsImage.src = singleNews.image_url;
+        modalNewsDetails.innerText = `${singleNews.details}`;
+
     })
 };

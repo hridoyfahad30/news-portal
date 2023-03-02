@@ -1,88 +1,141 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
-    <script src="https://kit.fontawesome.com/92a5562613.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      src="https://kit.fontawesome.com/92a5562613.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style.css" />
     <title>News Portal</title>
-</head>
-<body onload="fetchCategory()" class="py-1">
+  </head>
+  <body onload="fetchCategory()" class="py-1">
     <!-- Header Section Start -->
-    <header class="container mx-auto py-6 ">
-        <!-- Navbar Start -->
-        <div class="flex justify-between items-center">
-            <div>
-                <img src="./images/nav.png" alt="">
-            </div>
-            <div class="flex justify-between items-center gap-6">
-                <button class="py-2 px-4 rounded-lg text-lg font-medium active:bg-indigo-700 active:text-white hover:bg-indigo-500 hover:text-white">News</button>
-                <button class="py-2 px-4 rounded-lg text-lg font-medium active:bg-indigo-700 active:text-white hover:bg-indigo-500 hover:text-white">Blog</button>
-                <a href=""><img class="w-10" src="./images/avatar.png" alt=""></a>
-            </div>
+    <header class="container mx-auto py-6">
+      <!-- Navbar Start -->
+      <div class="flex justify-between items-center">
+        <div>
+          <img src="./images/nav.png" alt="" />
         </div>
-        <br>
-        <hr >
-        <!-- Navbar End -->
+        <div class="flex justify-between items-center gap-6">
+          <button
+            class="py-2 px-4 rounded-lg text-lg font-medium active:bg-indigo-700 active:text-white hover:bg-indigo-500 hover:text-white"
+          >
+            News
+          </button>
+          <button
+            class="py-2 px-4 rounded-lg text-lg font-medium active:bg-indigo-700 active:text-white hover:bg-indigo-500 hover:text-white"
+          >
+            Blog
+          </button>
+          <a href=""><img class="w-10" src="./images/avatar.png" alt="" /></a>
+        </div>
+      </div>
+      <br />
+      <hr />
+      <!-- Navbar End -->
 
-        <!-- Categories Section Start -->
-        <section id="categoriesContainer" class="flex justify-between items-center py-4">
-            
-        </section>
-        <!-- Categories Section End -->
+      <!-- Categories Section Start -->
+      <section
+        id="categoriesContainer"
+        class="flex justify-between items-center py-4"
+      ></section>
+      <!-- Categories Section End -->
 
-        <!-- Cetegories Count Start -->
-        <section>
-            <div class="alert bg-white shadow-lg flex justify-center w-2/6 mb-2">
-                  <h1 class="text-lg"><span id="newsCounter" class="font-medium" >0</span> items found for category <span id="newsCetegory" class="font-medium" > Breaking News</span></h1>
-            </div>
-        </section>
-        <!-- Cetegories Count End -->
-
+      <!-- Cetegories Count Start -->
+      <section>
+        <div class="alert bg-white shadow-lg flex justify-center w-2/6 mb-2">
+          <h1 class="text-lg">
+            <span id="newsCounter" class="font-medium">0</span> items found for
+            category
+            <span id="newsCetegory" class="font-medium"> Breaking News</span>
+          </h1>
+        </div>
+      </section>
+      <!-- Cetegories Count End -->
     </header>
     <!-- Header Section End -->
 
     <!-- Main Section Start -->
     <main class="container mx-auto py-8">
-        <!-- Sorting Section start -->
-        <section class="pb-9">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center gap-4">
-                    <h1 class="text-lg font-medium">Sort By View:</h1>
-                    <select class="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 px-2 py-1 rounded text-base leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                        <option>Default</option>
-                        <option>Missouri</option>
-                        <option>Texas</option>
-                      </select>
-                </div>
-                <div>
-                    <a href=""><button class="text-lg font-medium py-2 px-4 rounded border-2 border-indigo-200 active:bg-indigo-600 active:text-white hover:bg-indigo-400 hover:text-black">Today's Pick</button></a>
-                    <a href=""><button class="text-lg font-medium py-2 px-4 rounded border-2 border-indigo-200 active:bg-indigo-600 active:text-white hover:bg-indigo-400 hover:text-black">Trending</button></a>
-                </div>
-            </div>
-        </section>
-        <!-- Sorting Section end -->
+      <!-- Sorting Section start -->
+      <section class="pb-9">
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-4">
+            <h1 class="text-lg font-medium">Sort By View:</h1>
+            <select
+              class="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 px-2 py-1 rounded text-base leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-state"
+            >
+              <option>Default</option>
+              <option>Missouri</option>
+              <option>Texas</option>
+            </select>
+          </div>
+          <div>
+            <a href=""
+              ><button
+                class="text-lg font-medium py-2 px-4 rounded border-2 border-indigo-200 active:bg-indigo-600 active:text-white hover:bg-indigo-400 hover:text-black"
+              >
+                Today's Pick
+              </button></a
+            >
+            <a href=""
+              ><button
+                class="text-lg font-medium py-2 px-4 rounded border-2 border-indigo-200 active:bg-indigo-600 active:text-white hover:bg-indigo-400 hover:text-black"
+              >
+                Trending
+              </button></a
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Sorting Section end -->
 
-        <!-- News Section Start -->
-        <section id="newsContainer">
-                      
-        </section>
-        <!-- News Section End -->
+      <!-- News Section Start -->
+      <section id="newsContainer"></section>
+      <!-- News Section End -->
+
+      <!-- Modal Section Start -->
+      <section>
+        <input type="checkbox" id="my-modal-5" class="modal-toggle" />
+        <div class="modal">
+          <div class="modal-box w-11/12 max-w-5xl">
+            <h3 id="modalNewsTitle" class="font-bold text-2xl py-4"></h3>
+            <img id="modalNewsImage" src="" alt="" />
+            <p id="modalNewsDetails" class="py-4 text-xl"></p>
+            <div class="modal-action">
+              <label
+                for="my-modal-5"
+                class="btn bg-indigo-700 hover:bg-indigo-600"
+                >Close</label
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Modal Section End -->
     </main>
     <!-- Main Section End -->
 
     <!-- Footer Section -->
     <footer>
-        <div class="bg-white py-8 my-2">
-            <h1 class="text-center text-xl font-semibold text-zinc-500">Copyright 2023 News Portal</h1>
-        </div>
+      <div class="bg-white py-8 my-2">
+        <h1 class="text-center text-xl font-semibold text-zinc-500">
+          Copyright 2023 News Portal
+        </h1>
+      </div>
     </footer>
-    
 
     <!-- js -->
     <script src="./index.js"></script>
-</body>
+  </body>
 </html>
