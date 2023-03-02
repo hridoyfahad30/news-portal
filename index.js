@@ -2,6 +2,8 @@ document.body.style.backgroundColor = '#EDEAEA';
 
 /* Fetch Cetegory */
 
+let allData ;
+
 const fetchCategory = async() => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
     const res = await fetch(url)
@@ -28,9 +30,12 @@ const cetegoryNews = async(cetegoriedID, cetegoryName) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${cetegoriedID}`;
     const res = await fetch(url)
     const data = await res.json()
+    allData = data.data;
     showCetegoryNews(data.data, cetegoryName);
     // console.log(data.data);
-}
+};
+
+cetegoryNews('08', 'All News');
 
 /* Show Cetegories News */
 
@@ -47,8 +52,6 @@ const showCetegoryNews = (cetegoriesNews, cetegoryName) => {
 
     cetegoriesNews.forEach(singleCetegoryNews => {
 
-
-
         const date = new Date(singleCetegoryNews.author.published_date).toLocaleDateString();
 
         newsContainer.innerHTML += `
@@ -59,7 +62,7 @@ const showCetegoryNews = (cetegoriesNews, cetegoryName) => {
                 </div>
                 <div class="w-9/12 pr-8">
                     <h1 class="text-3xl font-medium py-4">${singleCetegoryNews.title}</h1>
-                    <p class="newsDetails text-lg text-justify text-gray-500 font-normal pb-4 ">${singleCetegoryNews.details}</p>
+                    <p class="newsDetails text-lg text-justify text-gray-500 font-normal pb-4 ">${singleCetegoryNews.details.length > 650 ? singleCetegoryNews.details.slice(0, 650)+ '...': singleCetegoryNews.details}</p>
                     <div class="flex justify-between items-center">
                         <div class="flex items-center gap-3">
                             <div>
@@ -118,7 +121,18 @@ const showDetailsNews = News => {
     })
 };
 
-const todaysPick = document.getElementById('todaysPick').addEventListener('click', function(){
+document.getElementById('todaysPick').addEventListener('click', function(e){
+    
+    const filterData = allData.filter(item => item.others_info.is_todays_pick)
+    showCetegoryNews(filterData);
+    const newsCetegory = document.getElementById('newsCetegory');
+        newsCetegory.innerText = "Today's Pick";
+});
 
-
+document.getElementById('trending').addEventListener('click', function(e){
+    
+    const filterData = allData.filter(item => item.others_info.is_trending)
+    showCetegoryNews(filterData);
+    const newsCetegory = document.getElementById('newsCetegory');
+        newsCetegory.innerText = "Trending";
 });
