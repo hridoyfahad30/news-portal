@@ -34,7 +34,7 @@ const cetegoryNews = async(cetegoriedID, cetegoryName) => {
 
 /* Show Cetegories News */
 
-const showCetegoryNews = (cetegoriesNews, cetegoryName) => {
+const showCetegoryNews = (cetegoriesNews, cetegoryName) => {    
     
     const newsContainer = document.getElementById('newsContainer');
     newsContainer.innerHTML = '';
@@ -46,6 +46,8 @@ const showCetegoryNews = (cetegoriesNews, cetegoryName) => {
         newsCetegory.innerText = cetegoryName;
 
     cetegoriesNews.forEach(singleCetegoryNews => {
+
+
 
         const date = new Date(singleCetegoryNews.author.published_date).toLocaleDateString();
 
@@ -115,3 +117,8 @@ const showDetailsNews = News => {
 
     })
 };
+
+const todaysPick = document.getElementById('todaysPick').addEventListener('click', function(){
+
+
+});
