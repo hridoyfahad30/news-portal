@@ -17,15 +17,20 @@
     <link rel="stylesheet" href="./style.css" />
     <title>News Portal</title>
   </head>
-  <body onload="fetchCategory()" class="py-1">
+
+  <body onload="fetchCategory()" class="py-1 px-2">
+
     <!-- Header Section Start -->
+
     <header class="container mx-auto py-6">
       <!-- Navbar Start -->
+
       <div class="flex justify-between items-center">
         <div>
           <a href="./index.html"><img src="./images/nav.png" alt="" /></a>
         </div>
-        <div class="flex justify-between items-center gap-6">
+        <div class="flex justify-between items-center xl:gap-6">
+            
           <button onclick="cetegoryNews('08', 'All News')"
             class="py-2 px-4 rounded-lg text-lg font-medium active:bg-indigo-700 active:text-white hover:bg-indigo-500 hover:text-white"
           >
@@ -46,13 +51,13 @@
       <!-- Categories Section Start -->
       <section
         id="categoriesContainer"
-        class="flex justify-between items-center py-4"
+        class="flex flex-wrap xl:justify-between items-center xl:py-4"
       ></section>
       <!-- Categories Section End -->
 
       <!-- Cetegories Count Start -->
       <section>
-        <div class="alert bg-white shadow-lg flex justify-start pl-8 w-2/6 mb-2">
+        <div class="alert bg-white shadow-lg flex justify-start xl:pl-8 xl:mb-2">
           <h1 class="text-lg">
             <span id="newsCounter" class="font-medium">0</span> items found for
             category
@@ -65,11 +70,11 @@
     <!-- Header Section End -->
 
     <!-- Main Section Start -->
-    <main class="container mx-auto py-8">
+    <main class="container mx-auto xl:py-8">
       <!-- Sorting Section start -->
-      <section class="pb-9">
-        <div class="flex justify-between items-center">
-          <div class="flex items-center gap-4">
+      <section class="xl:pb-9">
+        <div class="flex flex-wrap justify-between items-center">
+          <div class="flex items-center gap-4 py-2">
             <h1 class="text-lg font-medium">Sort By View:</h1>
             <select
               class="block appearance-none bg-gray-200 border border-gray-200 text-gray-700 px-2 py-1 rounded text-base leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -101,7 +106,9 @@
       <!-- Sorting Section end -->
 
       <!-- News Section Start -->
-      <section id="newsContainer"></section>
+      <section id="newsContainer">
+
+      </section>
       <!-- News Section End -->
 
       <!-- Modal Section Start -->
@@ -124,6 +131,15 @@
         </div>
       </section>
       <!-- Modal Section End -->
+
+      <!-- Back To Top Button Start -->
+      <section>
+        <button id="back-to-top" class="hidden fixed bottom-4 right-4 z-50 p-2 text-white bg-indigo-500 hover:bg-indigo-700 rounded-full">
+            <img class="w-8" src="./images/upgrade.png" alt="">
+        </button>
+        
+      </section>
+      <!-- Back To Top Button End -->
     </main>
     <!-- Main Section End -->
 

@@ -56,27 +56,27 @@ const showCetegoryNews = (cetegoriesNews, cetegoryName) => {
 
         newsContainer.innerHTML += `
         
-        <div class="flex justify-between items-start gap-5 bg-white p-6 my-8 rounded-lg max-h-96">
+        <div class="xl:flex justify-between items-start gap-5 bg-white p-3 xl:p-6 my-8 rounded-lg xl:max-h-96">
                 <div class="">
                     <img src="${singleCetegoryNews.thumbnail_url}" alt="">
                 </div>
-                <div class="w-9/12 pr-8">
-                    <h1 class="text-3xl font-medium py-4">${singleCetegoryNews.title}</h1>
-                    <p class="newsDetails text-lg text-justify text-gray-500 font-normal pb-4 ">${singleCetegoryNews.details.length > 650 ? singleCetegoryNews.details.slice(0, 650)+ '...': singleCetegoryNews.details}</p>
-                    <div class="flex justify-between items-center">
-                        <div class="flex items-center gap-3">
+                <div class="xl:w-9/12 xl:pr-8">
+                    <h1 class="xl:text-3xl font-medium py-4">${singleCetegoryNews.title}</h1>
+                    <p class="newsDetails xl:text-lg text-justify text-gray-500 xl:font-normal pb-4 ">${singleCetegoryNews.details.length > 650 ? singleCetegoryNews.details.slice(0, 650)+ '...': singleCetegoryNews.details}</p>
+                    <div class="flex justify-between items-center gap-2">
+                        <div class="flex flex-wrap items-center gap-2">
                             <div>
                                 <img class="w-10 rounded-full" id="authID" src="${singleCetegoryNews.author.img ? singleCetegoryNews.author.img : 'No Image Found'}" alt="">
                             </div>
                             <div>
-                                <h6 id="authName" class="text-lg font-medium">${singleCetegoryNews.author.name}</h6>
+                                <h6 id="authName" class="xl:text-lg xl:font-medium">${singleCetegoryNews.author.name}</h6>
                             <p id="publishDate">${date}</p>
                             </div>
                         </div>
-                        <div>
-                            <p><i class="fa-solid fa-eye"></i> <span class="text-lg font-medium"> ${singleCetegoryNews.total_view}</span></p>
+                        <div class="flex justify-center items-center>
+                            <p><i class="fa-solid fa-eye"></i> <span class="xl:text-lg xl:font-medium"> ${singleCetegoryNews.total_view}</span></p>
                         </div>
-                        <div>
+                        <div class="flex justify-center items-center gap-1">
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
                             <i class="fa-solid fa-star"></i>
@@ -122,7 +122,7 @@ const showDetailsNews = News => {
 };
 
 document.getElementById('todaysPick').addEventListener('click', function(e){
-    
+
     const filterData = allData.filter(item => item.others_info.is_todays_pick)
     showCetegoryNews(filterData);
     const newsCetegory = document.getElementById('newsCetegory');
@@ -136,3 +136,22 @@ document.getElementById('trending').addEventListener('click', function(e){
     const newsCetegory = document.getElementById('newsCetegory');
         newsCetegory.innerText = "Trending";
 });
+
+
+const backToTopButton = document.getElementById("back-to-top");
+
+window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove("hidden");
+    } else {
+        backToTopButton.classList.add("hidden");
+    }
+});
+
+backToTopButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+  
